@@ -13,10 +13,12 @@ else()
 endif(NOT DEFINED ENV{QT5_HOME})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 find_package(Qt5Core)
+find_package(Qt5Widgets)
 include_directories(${Qt5Core_INCLUDE_DIRS})
+include_directories(${Qt5Widgets_INCLUDE_DIRS})
 
 add_subdirectory(gtest-1.7.0)
 
 add_subdirectory(src/game)
-add_subdirectory(src/game-visuals)
+#add_subdirectory(src/game-visuals)
 add_subdirectory(tests)
