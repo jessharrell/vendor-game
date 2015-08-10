@@ -12,7 +12,7 @@ int main( int argc, char* argv[] )
    scene.setSceneRect(r);
    QGraphicsPixmapItem* sprite = new QGraphicsPixmapItem();
    sprite->setPos(100,100);
-   QPixmap spritePixmap("ralph_sprite.gif");
+   QPixmap spritePixmap("../images/ralph_sprite.gif");
    sprite->setPixmap(spritePixmap);
    scene.addItem(sprite);
    QGraphicsView view(&scene);
