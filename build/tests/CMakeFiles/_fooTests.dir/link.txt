@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/_fooTests.dir/main.cpp.o CMakeFiles/_fooTests.dir/fooTests.cpp.o  -o ../bin/_fooTests -rdynamic ../lib/libgtest.a ../lib/libfoo.so -lpthread /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.2.1 -Wl,-rpath,/home/jess/PersonalProjects/vendor-game/build/lib 
