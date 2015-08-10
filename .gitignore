@@ -1,3 +1,9 @@
+# Project Build Directory
+build
+
+# QtCreator Files
+*.txt.user*
+
 # Compiled Object files
 *.slo
 *.lo

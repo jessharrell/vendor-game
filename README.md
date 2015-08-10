@@ -4,17 +4,14 @@ Requirements:
 ------------------------------------------------------------------------------
 cmake, Qt 5.4, gcc
 
-### Installing Qt 5.4 on Linux
-1. Download Qt 5.4 community edition at http://www.qt.io/download-open-source/
-2. chmod +x qt-opensource-<installer-version>.run
-3. ./qt-opensource-<installer-version>.run
-4. set QT5_HOME to your chosen install path
+### Install Qt 5.4
+Download Qt 5.4 community edition at http://www.qt.io/download-open-source/
 
 Build instructions:
 ------------------------------------------------------------------------------
-1. change to build directory
-2. run cmake
-3. run make
+1. `mkdir build` && `cd build`
+2. `cmake -DQT5HOME=<QT5_Install_Location> ..`
+3. `make`
 
 Run instructions:
 ------------------------------------------------------------------------------

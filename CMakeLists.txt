@@ -6,16 +6,18 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
-if(NOT DEFINED ENV{QT5_HOME})
+if(NOT DEFINED QT5_HOME)
 	message(FATAL_ERROR "ERROR: QT5_HOME not defined. Set QT5_HOME to the Qt5 install path")
 else()
-	set(CMAKE_PREFIX_PATH $ENV{QT5_HOME}/5.4/gcc_64/lib/cmake)
-endif(NOT DEFINED ENV{QT5_HOME})
+	set(CMAKE_PREFIX_PATH ${QT5_HOME}/5.4/gcc_64/lib/cmake)
+endif(NOT DEFINED QT5_HOME)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 find_package(Qt5Core)
 find_package(Qt5Widgets)
 include_directories(${Qt5Core_INCLUDE_DIRS})
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
+
+add_custom_target(readme SOURCES "README.md")
 
 add_subdirectory(gtest-1.7.0)
 
