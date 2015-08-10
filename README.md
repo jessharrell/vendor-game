@@ -16,4 +16,4 @@ Build instructions:
 Run instructions:
 ------------------------------------------------------------------------------
 Please note that tests will run during build
-Executables can be found in <build-dir>/bin
+Executables can be found in build/bin
