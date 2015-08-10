@@ -22,5 +22,5 @@ add_custom_target(readme SOURCES "README.md")
 add_subdirectory(gtest-1.7.0)
 
 add_subdirectory(src/game)
-#add_subdirectory(src/game-visuals)
+add_subdirectory(src/game-visuals)
 add_subdirectory(tests)

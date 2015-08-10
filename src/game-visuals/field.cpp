@@ -1,20 +1,36 @@
 #include "field.h"
 #include <QtWidgets/QGraphicsPixmapItem>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QGraphicsPixmapItem>
 
-
-field::field(){
-    QRect r(50, 50, 500, 500);
-    scene.setSceneRect(r);
+field::field()
+    : view(&scene)
+{
+    scene.setSceneRect(QApplication::desktop()->screenGeometry());
     QGraphicsPixmapItem* sprite = new QGraphicsPixmapItem();
     sprite->setPos(100,100);
-    QPixmap spritePixmap("ralph_sprite.gif");
+    QPixmap spritePixmap("../images/ralph_sprite.gif");
     sprite->setPixmap(spritePixmap);
     scene.addItem(sprite);
 }
 
-field::~field(){
+field::~field()
+{
 
 }
 
-field::show(){
+void field::show()
+{
+    view.show();
+}
+
+const QRectF field::getSize()
+{
+    return scene.sceneRect();
+}
+
+const int field::getCharacterCount()
+{
+    return scene.items().count();
 }

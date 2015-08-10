@@ -4,5 +4,5 @@ add_library( game-visuals
 )
 
 target_link_libraries( game-visuals
-	Qt5::Core
+        Qt5::Widgets
 )

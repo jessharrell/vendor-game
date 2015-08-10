@@ -1,16 +1,21 @@
-add_executable( _fooTests
-    main.cpp
-    fooTests.cpp
+include_directories(
+    ${CMAKE_SOURCE_DIR}/gtest-1.7.0/include
+    ${CMAKE_SOURCE_DIR}/src
 )
 
-target_include_directories(_fooTests PUBLIC ${CMAKE_SOURCE_DIR}/gtest-1.7.0/include ${CMAKE_SOURCE_DIR}/src)
-target_link_libraries( _fooTests
+add_executable( _fieldTests
+    main.cpp
+    fieldTests.cpp
+)
+
+target_link_libraries( _fieldTests
     gtest
+    game-visuals
 )
 
 add_custom_command(
-    TARGET _fooTests
+    TARGET _fieldTests
     POST_BUILD
-    COMMAND _fooTests
+    COMMAND _fieldTests
     ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
 )
