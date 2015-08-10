@@ -1,8 +1,8 @@
-Skeleton for C++ Project using CMake, Qt and googletest
+Vender Arcade Game
 ==============================================================================
 Requirements:
 ------------------------------------------------------------------------------
-cmake, Qt 5.4, gcc
+cmake, Qt 5.4, clang
 
 ### Install Qt 5.4
 Download Qt 5.4 community edition at http://www.qt.io/download-open-source/
