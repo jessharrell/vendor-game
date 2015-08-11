@@ -8,7 +8,8 @@
 
 class QGraphicsPixmapItem;
 
-class field {
+class field: public QObject{
+    Q_OBJECT
 public:
     field();
     virtual ~field();
@@ -18,6 +19,9 @@ public:
     const QRectF getSize();
     const int getCharacterCount();
     const QPointF getVendorPosition();
+
+    void moveVendorRight();
+    void moveVendorLeft();
 
 private:
     QGraphicsScene scene;

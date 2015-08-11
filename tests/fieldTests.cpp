@@ -1,8 +1,10 @@
 #include <gtest/gtest.h>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QKeyEvent>
 #include <game-visuals/field.h>
 #include <game/startingValues.h>
+#include <game/constantValues.h>
 
 TEST(field, isSizeOfScreen)
 {
@@ -22,8 +24,41 @@ TEST(field, startsWithVendorAtStartPosition)
     EXPECT_EQ(startingValues::VENDOR_START_POSITION, sut.getVendorPosition());
 }
 
-TEST(field, moveVendorRightMovesVendorTenRight)
+TEST(field, moveVendorRightMovesVendorRightByMovementAmount)
 {
     field sut;
-    sut.getVendorPosition();
+    QPointF originalPos = sut.getVendorPosition();
+
+    sut.moveVendorRight();
+    QPointF updatedPos = sut.getVendorPosition();
+
+    EXPECT_EQ(originalPos.y(), updatedPos.y());
+    EXPECT_EQ(originalPos.x() + constantValues::MOVEMENT_AMOUNT, updatedPos.x());
 }
+
+TEST(field, moveVendorLeftMovesVendorLeftByMovementAmount)
+{
+    field sut;
+    QPointF originalPos = sut.getVendorPosition();
+
+    sut.moveVendorLeft();
+    QPointF updatedPos = sut.getVendorPosition();
+
+    EXPECT_EQ(originalPos.y(), updatedPos.y());
+    EXPECT_EQ(originalPos.x() - constantValues::MOVEMENT_AMOUNT, updatedPos.x());
+}
+
+//TEST(field, pressingLeftMovesVendorLeft)
+//{
+//    field sut;
+//    QPointF originalPos = sut.getVendorPosition();
+
+//    QKeyEvent* keyPressEvent = new QKeyEvent(QEvent::KeyPress, Qt::Key_Direction_L, Qt::NoModifier);
+//    QApplication::postEvent(&sut, keyPressEvent);
+//    QApplication::processEvents();
+
+//    QPointF updatedPos = sut.getVendorPosition();
+
+//    EXPECT_EQ(originalPos.y(), updatedPos.y());
+//    EXPECT_EQ(originalPos.x() - constantValues::MOVEMENT_AMOUNT, updatedPos.x());
+//}

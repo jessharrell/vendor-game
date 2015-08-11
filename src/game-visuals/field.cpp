@@ -1,9 +1,9 @@
 #include "field.h"
-#include <QtWidgets/QGraphicsPixmapItem>
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QGraphicsPixmapItem>
 #include <game/startingValues.h>
+#include <game/constantValues.h>
 
 field::field()
     : view(&scene)
@@ -39,4 +39,14 @@ const int field::getCharacterCount()
 const QPointF field::getVendorPosition()
 {
     return vendor->pos();
+}
+
+void field::moveVendorRight()
+{
+    vendor->moveBy(constantValues::MOVEMENT_AMOUNT, 0);
+}
+
+void field::moveVendorLeft()
+{
+    vendor->moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
 }
