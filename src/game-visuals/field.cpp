@@ -3,16 +3,17 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QGraphicsPixmapItem>
+#include <game/startingValues.h>
 
 field::field()
     : view(&scene)
 {
     scene.setSceneRect(QApplication::desktop()->screenGeometry());
-    QGraphicsPixmapItem* sprite = new QGraphicsPixmapItem();
-    sprite->setPos(100,100);
+    vendor = new QGraphicsPixmapItem();
+    vendor->setPos(startingValues::VENDOR_START_POSITION);
     QPixmap spritePixmap("../images/ralph_sprite.gif");
-    sprite->setPixmap(spritePixmap);
-    scene.addItem(sprite);
+    vendor->setPixmap(spritePixmap);
+    scene.addItem(vendor);
 }
 
 field::~field()
@@ -33,4 +34,9 @@ const QRectF field::getSize()
 const int field::getCharacterCount()
 {
     return scene.items().count();
+}
+
+const QPointF field::getVendorPosition()
+{
+    return vendor->pos();
 }

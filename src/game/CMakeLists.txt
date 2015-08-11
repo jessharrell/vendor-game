@@ -1,5 +1,6 @@
 add_executable( game
-        main.cpp
+    main.cpp
+    startingValues.h
 )
 
 file(COPY ${CMAKE_SOURCE_DIR}/images DESTINATION ${CMAKE_BINARY_DIR})
