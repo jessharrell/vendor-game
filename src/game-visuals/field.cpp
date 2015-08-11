@@ -9,11 +9,12 @@
 field::field()
     : view(&scene)
 {
+    QPixmap stadiumBackground(constantValues::STADIUM_BACKGROUND);
+    scene.setBackgroundBrush(QBrush(stadiumBackground));
+
     scene.setSceneRect(QApplication::desktop()->screenGeometry());
     theVendor = new vendor();
     theVendor->setPos(startingValues::VENDOR_START_POSITION);
-    QPixmap spritePixmap("../images/ralph_sprite.gif");
-    theVendor->setPixmap(spritePixmap);
     scene.addItem(theVendor);
 }
 
