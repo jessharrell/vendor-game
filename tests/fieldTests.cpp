@@ -47,18 +47,3 @@ TEST(field, moveVendorLeftMovesVendorLeftByMovementAmount)
     EXPECT_EQ(originalPos.y(), updatedPos.y());
     EXPECT_EQ(originalPos.x() - constantValues::MOVEMENT_AMOUNT, updatedPos.x());
 }
-
-//TEST(field, pressingLeftMovesVendorLeft)
-//{
-//    field sut;
-//    QPointF originalPos = sut.getVendorPosition();
-
-//    QKeyEvent* keyPressEvent = new QKeyEvent(QEvent::KeyPress, Qt::Key_Direction_L, Qt::NoModifier);
-//    QApplication::postEvent(&sut, keyPressEvent);
-//    QApplication::processEvents();
-
-//    QPointF updatedPos = sut.getVendorPosition();
-
-//    EXPECT_EQ(originalPos.y(), updatedPos.y());
-//    EXPECT_EQ(originalPos.x() - constantValues::MOVEMENT_AMOUNT, updatedPos.x());
-//}

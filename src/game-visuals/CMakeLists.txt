@@ -5,6 +5,8 @@ set(CMAKE_AUTOMOC ON)
 add_library( game-visuals
         field.cpp
         field.h
+        vendor.cpp
+        vendor.h
 )
 
 target_link_libraries( game-visuals
