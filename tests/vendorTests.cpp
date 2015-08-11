@@ -6,12 +6,17 @@
 #include <game-visuals/vendor.h>
 #include <game/constantValues.h>
 
+TEST(vendor, isFocusableItem)
+{
+    vendor sut;
+    EXPECT_EQ(QGraphicsItem::ItemIsFocusable, sut.flags());
+}
+
 TEST(vendor, movesLeftWhenLeftDirectionPressed)
 {
     QGraphicsScene scene;
     vendor* sut = new vendor();
     scene.addItem(sut);
-    sut->setFlag(QGraphicsItem::ItemIsFocusable);
     sut->setFocus();
     QPointF originalPos = sut->pos();
 

@@ -6,7 +6,7 @@
 vendor::vendor(QGraphicsItem* parent)
     : QGraphicsPixmapItem(parent)
 {
-
+    setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
 vendor::~vendor()
@@ -16,7 +16,6 @@ vendor::~vendor()
 
 void vendor::keyPressEvent(QKeyEvent* event)
 {
-    qDebug() << "keyPressed";
     if( Qt::Key_Left == event->key() )
     {
         moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
