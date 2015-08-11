@@ -25,4 +25,12 @@ void vendor::keyPressEvent(QKeyEvent* event)
     {
         moveBy(constantValues::MOVEMENT_AMOUNT, 0);
     }
+    else if( Qt::Key_Up == event->key() )
+    {
+        moveBy(0, -1 * constantValues::MOVEMENT_AMOUNT);
+    }
+    else if( Qt::Key_Down == event->key() )
+    {
+        moveBy(0, constantValues::MOVEMENT_AMOUNT);
+    }
 }

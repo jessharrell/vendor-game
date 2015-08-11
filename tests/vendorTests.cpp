@@ -12,36 +12,70 @@ TEST(vendor, isFocusableItem)
     EXPECT_EQ(QGraphicsItem::ItemIsFocusable, sut.flags());
 }
 
-TEST(vendor, movesLeftWhenLeftDirectionPressed)
+class TestVendorInScene: public ::testing::Test
 {
+public:
+    TestVendorInScene()
+        : sut(new vendor())
+    {
+    }
+
+    void SetUp()
+    {
+        scene.addItem(sut);
+    }
+
+    void pressKey(int key)
+    {
+        QKeyEvent* keyPressEvent = new QKeyEvent(QEvent::KeyPress, key, Qt::NoModifier);
+        QApplication::postEvent(&scene, keyPressEvent);
+        QApplication::processEvents();
+    }
+
+    vendor* sut;
     QGraphicsScene scene;
-    vendor* sut = new vendor();
-    scene.addItem(sut);
+};
+
+TEST_F(TestVendorInScene, movesLeftWhenLeftDirectionPressed)
+{
     QPointF originalPos = sut->pos();
 
-    QKeyEvent* keyPressEvent = new QKeyEvent(QEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
-    QApplication::postEvent(&scene, keyPressEvent);
-    QApplication::processEvents();
-
+    pressKey(Qt::Key_Left);
     QPointF updatedPos = sut->pos();
 
     EXPECT_EQ(originalPos.y(), updatedPos.y());
     EXPECT_EQ(originalPos.x() - constantValues::MOVEMENT_AMOUNT, updatedPos.x());
 }
 
-TEST(vendor, movesRightWhenRightDirectionPressed)
+TEST_F(TestVendorInScene, movesRightWhenRightDirectionPressed)
 {
-    QGraphicsScene scene;
-    vendor* sut = new vendor();
-    scene.addItem(sut);
     QPointF originalPos = sut->pos();
 
-    QKeyEvent* keyPressEvent = new QKeyEvent(QEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
-    QApplication::postEvent(&scene, keyPressEvent);
-    QApplication::processEvents();
-
+    pressKey(Qt::Key_Right);
     QPointF updatedPos = sut->pos();
 
     EXPECT_EQ(originalPos.y(), updatedPos.y());
     EXPECT_EQ(originalPos.x() + constantValues::MOVEMENT_AMOUNT, updatedPos.x());
+}
+
+TEST_F(TestVendorInScene, movesUpWhenUpDirectionPressed)
+{
+    QPointF originalPos = sut->pos();
+
+    pressKey(Qt::Key_Up);
+    QPointF updatedPos = sut->pos();
+
+    EXPECT_EQ(originalPos.y() - constantValues::MOVEMENT_AMOUNT, updatedPos.y());
+    EXPECT_EQ(originalPos.x(), updatedPos.x());
+}
+
+TEST_F(TestVendorInScene, movesDownWhenDownDirectionPressed)
+{
+    QPointF originalPos = sut->pos();
+
+    pressKey(Qt::Key_Down);
+    QPointF updatedPos = sut->pos();
+
+    EXPECT_EQ(originalPos.y() + constantValues::MOVEMENT_AMOUNT, updatedPos.y());
+    EXPECT_EQ(originalPos.x(), updatedPos.x());
 }
