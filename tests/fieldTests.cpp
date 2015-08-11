@@ -23,27 +23,3 @@ TEST(field, startsWithVendorAtStartPosition)
     field sut;
     EXPECT_EQ(startingValues::VENDOR_START_POSITION, sut.getVendorPosition());
 }
-
-TEST(field, moveVendorRightMovesVendorRightByMovementAmount)
-{
-    field sut;
-    QPointF originalPos = sut.getVendorPosition();
-
-    sut.moveVendorRight();
-    QPointF updatedPos = sut.getVendorPosition();
-
-    EXPECT_EQ(originalPos.y(), updatedPos.y());
-    EXPECT_EQ(originalPos.x() + constantValues::MOVEMENT_AMOUNT, updatedPos.x());
-}
-
-TEST(field, moveVendorLeftMovesVendorLeftByMovementAmount)
-{
-    field sut;
-    QPointF originalPos = sut.getVendorPosition();
-
-    sut.moveVendorLeft();
-    QPointF updatedPos = sut.getVendorPosition();
-
-    EXPECT_EQ(originalPos.y(), updatedPos.y());
-    EXPECT_EQ(originalPos.x() - constantValues::MOVEMENT_AMOUNT, updatedPos.x());
-}

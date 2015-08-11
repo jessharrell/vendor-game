@@ -6,7 +6,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-class QGraphicsPixmapItem;
+class vendor;
 
 class field: public QObject{
     Q_OBJECT
@@ -20,13 +20,10 @@ public:
     const int getCharacterCount();
     const QPointF getVendorPosition();
 
-    void moveVendorRight();
-    void moveVendorLeft();
-
 private:
     QGraphicsScene scene;
     QGraphicsView view;
-    QGraphicsPixmapItem* vendor;
+    vendor* theVendor;
 };
 
 #endif

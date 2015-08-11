@@ -4,16 +4,17 @@
 #include <QGraphicsPixmapItem>
 #include <game/startingValues.h>
 #include <game/constantValues.h>
+#include "vendor.h"
 
 field::field()
     : view(&scene)
 {
     scene.setSceneRect(QApplication::desktop()->screenGeometry());
-    vendor = new QGraphicsPixmapItem();
-    vendor->setPos(startingValues::VENDOR_START_POSITION);
+    theVendor = new vendor();
+    theVendor->setPos(startingValues::VENDOR_START_POSITION);
     QPixmap spritePixmap("../images/ralph_sprite.gif");
-    vendor->setPixmap(spritePixmap);
-    scene.addItem(vendor);
+    theVendor->setPixmap(spritePixmap);
+    scene.addItem(theVendor);
 }
 
 field::~field()
@@ -38,15 +39,5 @@ const int field::getCharacterCount()
 
 const QPointF field::getVendorPosition()
 {
-    return vendor->pos();
-}
-
-void field::moveVendorRight()
-{
-    vendor->moveBy(constantValues::MOVEMENT_AMOUNT, 0);
-}
-
-void field::moveVendorLeft()
-{
-    vendor->moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
+    return theVendor->pos();
 }
