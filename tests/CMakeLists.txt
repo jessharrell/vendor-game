@@ -4,6 +4,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 add_executable( _gameTests
     main.cpp
     fieldTests.cpp
+    foodTests.cpp
     vendorTests.cpp
 )
 

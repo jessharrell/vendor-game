@@ -55,8 +55,8 @@ void vendor::keyPressEvent(QKeyEvent* event)
     {
         QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
         food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
-        food->setPos(pos().x() + 10, pos().y());
-        this->scene()->addItem(food);
+        food->setPos(pos().x() + 10, pos().y()); // need to test
+        scene()->addItem(food);
     }
 }
 
