@@ -20,8 +20,11 @@ void vendor::keyPressEvent(QKeyEvent* event)
 {
     if( Qt::Key_Left == event->key() )
     {
-        changePixmap(constantValues::VENDOR_MOVING_LEFT_FILENAME);
-        moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
+        if(pos().y() == constantValues::TOP_HORIZONTAL_AISLE_LOCATION || pos().y() == constantValues::BOTTOM_HORIZONTAL_AISLE_LOCATION)
+        {
+            changePixmap(constantValues::VENDOR_MOVING_LEFT_FILENAME);
+            moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
+        }
     }
     else if( Qt::Key_Right == event->key() )
     {
