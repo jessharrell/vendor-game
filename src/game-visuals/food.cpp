@@ -1,7 +1,14 @@
 #include "food.h"
+#include <game/constantValues.h>
+#include <QPixmap>
 
-food::food()
+food::food(QGraphicsItem* parent)
+    : QGraphicsPixmapItem(parent)
+{
+    setPixmap(QPixmap(constantValues::FOOD_FILENAME));
+}
+
+food::~food()
 {
 
 }
-
