@@ -13,6 +13,7 @@ protected:
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
     void changePixmap(QString filename);
     bool inVerticalAisle();
+    bool inHorizontalAisle();
 };
 
 #endif // VENDOR_H
