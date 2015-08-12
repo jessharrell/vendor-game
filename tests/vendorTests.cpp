@@ -186,3 +186,10 @@ TEST_F(TestVendorInScene, doesNotMoveRightWhenNotInOneOfTheHorizontalAisles)
     EXPECT_EQ(originalPos.x(), updatedPos.x());
     EXPECT_EQ(originalPos.y(), updatedPos.y());
 }
+
+TEST_F(TestVendorInScene, dropsFoodWhenTheSpaceBarIsPressed)
+{
+    ASSERT_EQ(1, scene.items().count());
+    pressKey(Qt::Key_Space);
+    EXPECT_EQ(2, scene.items().count());
+}

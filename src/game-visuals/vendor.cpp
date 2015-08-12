@@ -1,7 +1,7 @@
 #include "vendor.h"
 #include <game/constantValues.h>
 #include <QKeyEvent>
-#include <QDebug>
+#include <QGraphicsScene>
 
 vendor::vendor(QGraphicsItem* parent)
     : QGraphicsPixmapItem(parent)
@@ -50,6 +50,13 @@ void vendor::keyPressEvent(QKeyEvent* event)
             changePixmap(constantValues::VENDOR_MOVING_DOWN_FILENAME);
             moveBy(0, constantValues::MOVEMENT_AMOUNT);
         }
+    }
+    else if( Qt::Key_Space == event->key() )
+    {
+        QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
+        food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
+        food->setPos(pos().x() + 10, pos().y());
+        this->scene()->addItem(food);
     }
 }
 

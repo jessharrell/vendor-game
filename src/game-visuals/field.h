@@ -1,7 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
-#include <QString>
+#include <QObject>
 #include <QPointF>
 #include <QGraphicsScene>
 #include <QGraphicsView>

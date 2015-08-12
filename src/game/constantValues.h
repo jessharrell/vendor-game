@@ -18,6 +18,8 @@ namespace constantValues {
     const static char* VENDOR_MOVING_DOWN_FILENAME = "../images/vendor_front.png";
     const static char* VENDOR_MOVING_LEFT_FILENAME = "../images/vendor_left.png";
     const static char* VENDOR_MOVING_RIGHT_FILENAME = "../images/vendor_right.png";
+
+    const static char* FOOD_FILENAME = "../images/vendor_front.png";
 }
 
 #endif // CONSTANT_VALUES

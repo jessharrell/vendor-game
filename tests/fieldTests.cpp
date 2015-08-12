@@ -6,7 +6,7 @@
 #include <game/startingValues.h>
 #include <game/constantValues.h>
 
-TEST(field, isSizeOfScreen)
+TEST(field, isSizeCorrectSize)
 {
     field sut;
     EXPECT_EQ(constantValues::STADIUM_WIDTH, sut.getSize().width());
