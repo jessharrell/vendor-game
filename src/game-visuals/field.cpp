@@ -12,7 +12,7 @@ field::field()
     QPixmap stadiumBackground(constantValues::STADIUM_BACKGROUND);
     scene.setBackgroundBrush(QBrush(stadiumBackground));
 
-    scene.setSceneRect(QApplication::desktop()->screenGeometry());
+    scene.setSceneRect(0, 0, constantValues::STADIUM_WIDTH, constantValues::STADIUM_HEIGHT);
     theVendor = new vendor();
     theVendor->setPos(startingValues::VENDOR_START_POSITION);
     scene.addItem(theVendor);

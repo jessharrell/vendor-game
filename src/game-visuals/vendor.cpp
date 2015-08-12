@@ -30,13 +30,20 @@ void vendor::keyPressEvent(QKeyEvent* event)
     }
     else if( Qt::Key_Up == event->key() )
     {
-        changePixmap(constantValues::VENDOR_MOVING_UP_FILENAME);
-        moveBy(0, -1 * constantValues::MOVEMENT_AMOUNT);
+        if(inVerticalAisle())
+        {
+            changePixmap(constantValues::VENDOR_MOVING_UP_FILENAME);
+            moveBy(0, -1 * constantValues::MOVEMENT_AMOUNT);
+        }
+
     }
     else if( Qt::Key_Down == event->key() )
     {
-        changePixmap(constantValues::VENDOR_MOVING_DOWN_FILENAME);
-        moveBy(0, constantValues::MOVEMENT_AMOUNT);
+        if(inVerticalAisle())
+        {
+            changePixmap(constantValues::VENDOR_MOVING_DOWN_FILENAME);
+            moveBy(0, constantValues::MOVEMENT_AMOUNT);
+        }
     }
 }
 
@@ -44,4 +51,9 @@ void vendor::changePixmap(QString filename)
 {
     QPixmap spritePixmap(filename);
     setPixmap(spritePixmap);
+}
+
+bool vendor::inVerticalAisle()
+{
+    return pos().x() == constantValues::LEFT_VERTICAL_AISLE_LOCATION || pos().x() == constantValues::RIGHT_VERTICAL_AISLE_LOCATION;
 }

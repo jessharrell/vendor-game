@@ -12,6 +12,7 @@ public:
 protected:
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
     void changePixmap(QString filename);
+    bool inVerticalAisle();
 };
 
 #endif // VENDOR_H

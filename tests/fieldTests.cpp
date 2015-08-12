@@ -9,7 +9,8 @@
 TEST(field, isSizeOfScreen)
 {
     field sut;
-    EXPECT_EQ(QApplication::desktop()->screenGeometry(), sut.getSize().toRect());
+    EXPECT_EQ(constantValues::STADIUM_WIDTH, sut.getSize().width());
+    EXPECT_EQ(constantValues::STADIUM_HEIGHT, sut.getSize().height());
 }
 
 TEST(field, hasVenderCharacter)

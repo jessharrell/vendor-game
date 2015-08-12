@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+    #include <gtest/gtest.h>
 #include <QApplication>
 #include <QKeyEvent>
 #include <QGraphicsScene>
@@ -58,8 +58,9 @@ TEST_F(TestVendorInScene, movesRightWhenRightDirectionPressed)
     EXPECT_EQ(originalPos.x() + constantValues::MOVEMENT_AMOUNT, updatedPos.x());
 }
 
-TEST_F(TestVendorInScene, movesUpWhenUpDirectionPressed)
+TEST_F(TestVendorInScene, movesUpWhenUpDirectionPressedAndInLeftAisle)
 {
+    sut->setX(constantValues::LEFT_VERTICAL_AISLE_LOCATION);
     QPointF originalPos = sut->pos();
 
     pressKey(Qt::Key_Up);
@@ -69,13 +70,65 @@ TEST_F(TestVendorInScene, movesUpWhenUpDirectionPressed)
     EXPECT_EQ(originalPos.x(), updatedPos.x());
 }
 
-TEST_F(TestVendorInScene, movesDownWhenDownDirectionPressed)
+TEST_F(TestVendorInScene, movesUpWhenUpDirectionPressedAndInRightAisle)
 {
+    sut->setX(constantValues::RIGHT_VERTICAL_AISLE_LOCATION);
+    QPointF originalPos = sut->pos();
+
+    pressKey(Qt::Key_Up);
+    QPointF updatedPos = sut->pos();
+
+    EXPECT_EQ(originalPos.y() - constantValues::MOVEMENT_AMOUNT, updatedPos.y());
+    EXPECT_EQ(originalPos.x(), updatedPos.x());
+}
+
+TEST_F(TestVendorInScene, movesDownWhenDownDirectionPressedAndInLeftAisle)
+{
+    sut->setX(constantValues::LEFT_VERTICAL_AISLE_LOCATION);
     QPointF originalPos = sut->pos();
 
     pressKey(Qt::Key_Down);
     QPointF updatedPos = sut->pos();
 
+    EXPECT_EQ(originalPos.x(), updatedPos.x());
     EXPECT_EQ(originalPos.y() + constantValues::MOVEMENT_AMOUNT, updatedPos.y());
+}
+
+
+TEST_F(TestVendorInScene, movesDownWhenDownDirectionPressedAndInRightAisle)
+{
+    sut->setX(constantValues::RIGHT_VERTICAL_AISLE_LOCATION);
+    QPointF originalPos = sut->pos();
+
+    pressKey(Qt::Key_Down);
+    QPointF updatedPos = sut->pos();
+
+    EXPECT_EQ(originalPos.x(), updatedPos.x());
+    EXPECT_EQ(originalPos.y() + constantValues::MOVEMENT_AMOUNT, updatedPos.y());
+}
+
+TEST_F(TestVendorInScene, doesNotMoveDownWhenNotInOneOfTheVerticalAisles)
+{
+    QPointF originalPos = sut->pos();
+    ASSERT_NE(constantValues::LEFT_VERTICAL_AISLE_LOCATION, originalPos.y());
+    ASSERT_NE(constantValues::RIGHT_VERTICAL_AISLE_LOCATION, originalPos.y());
+
+    pressKey(Qt::Key_Down);
+    QPointF updatedPos = sut->pos();
+
+    EXPECT_EQ(originalPos.y(), updatedPos.y());
+    EXPECT_EQ(originalPos.x(), updatedPos.x());
+}
+
+TEST_F(TestVendorInScene, doesNotMoveUpWhenNotInOneOfTheVerticalAisles)
+{
+    QPointF originalPos = sut->pos();
+    ASSERT_NE(constantValues::LEFT_VERTICAL_AISLE_LOCATION, originalPos.y());
+    ASSERT_NE(constantValues::RIGHT_VERTICAL_AISLE_LOCATION, originalPos.y());
+
+    pressKey(Qt::Key_Up);
+    QPointF updatedPos = sut->pos();
+
+    EXPECT_EQ(originalPos.y(), updatedPos.y());
     EXPECT_EQ(originalPos.x(), updatedPos.x());
 }
