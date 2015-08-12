@@ -2,6 +2,8 @@
 #include <game/constantValues.h>
 #include <QKeyEvent>
 #include <QGraphicsScene>
+#include <QGraphicsItemAnimation>
+#include <QTimeLine>
 
 vendor::vendor(QGraphicsItem* parent)
     : QGraphicsPixmapItem(parent)
@@ -56,7 +58,20 @@ void vendor::keyPressEvent(QKeyEvent* event)
         QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
         food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
         food->setPos(pos().x() + 10, pos().y()); // need to test
+
+        QTimeLine* timer = new QTimeLine();
+        timer->setUpdateInterval(60);
+        QGraphicsItemAnimation* animator = new QGraphicsItemAnimation();
+        animator->setItem(food);
+        animator->setTimeLine(timer);
+        int moveToX = pos().x()+50;
+        for(int i = 0; i < 10; i++)
+        {
+            animator->setPosAt(i/10, QPointF(moveToX, pos().y()));
+            moveToX+=70;
+        }
         scene()->addItem(food);
+        timer->start();
     }
 }
 
