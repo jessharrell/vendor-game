@@ -11,15 +11,15 @@ namespace constantValues {
     // the stadium is shaped like a tic-tac-toe board.
     const static int TOP_HORIZONTAL_AISLE_LOCATION = 80;
     const static int BOTTOM_HORIZONTAL_AISLE_LOCATION = 320;
-    const static int LEFT_VERTICAL_AISLE_LOCATION = 135;
-    const static int RIGHT_VERTICAL_AISLE_LOCATION = 655;
+    const static int LEFT_VERTICAL_AISLE_LOCATION = 155;
+    const static int RIGHT_VERTICAL_AISLE_LOCATION = 675;
 
     const static char* VENDOR_MOVING_UP_FILENAME = "../images/vendor_front.png";
     const static char* VENDOR_MOVING_DOWN_FILENAME = "../images/vendor_front.png";
     const static char* VENDOR_MOVING_LEFT_FILENAME = "../images/vendor_left.png";
     const static char* VENDOR_MOVING_RIGHT_FILENAME = "../images/vendor_right.png";
 
-    const static char* FOOD_FILENAME = "../images/vendor_front.png";
+    const static char* FOOD_FILENAME = "../images/food.png";
 }
 
 #endif // CONSTANT_VALUES

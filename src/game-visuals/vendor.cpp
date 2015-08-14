@@ -30,7 +30,7 @@ void vendor::keyPressEvent(QKeyEvent* event)
         {
             QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
             food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
-            food->setPos(pos().x() - constantValues::MOVEMENT_AMOUNT, pos().y());
+            food->setPos(pos().x() - food->boundingRect().width(), pos().y());
             scene()->addItem(food);
         }
     }
@@ -44,7 +44,7 @@ void vendor::keyPressEvent(QKeyEvent* event)
         {
             QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
             food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
-            food->setPos(pos().x() + constantValues::MOVEMENT_AMOUNT, pos().y());
+            food->setPos(pos().x() + boundingRect().width(), pos().y());
             scene()->addItem(food);
         }
     }
