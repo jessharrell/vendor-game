@@ -2,7 +2,7 @@
 #define CONSTANT_VALUES
 
 namespace constantValues {
-    const static int MOVEMENT_AMOUNT = 20;
+    const static int MOVEMENT_AMOUNT = 40;
 
     const static char* STADIUM_BACKGROUND = "../images/stadium.png";
     const static int STADIUM_WIDTH = 1000;
@@ -10,7 +10,7 @@ namespace constantValues {
 
     // the stadium is shaped like a tic-tac-toe board.
     const static int TOP_HORIZONTAL_AISLE_LOCATION = 80;
-    const static int BOTTOM_HORIZONTAL_AISLE_LOCATION = 300;
+    const static int BOTTOM_HORIZONTAL_AISLE_LOCATION = 320;
     const static int LEFT_VERTICAL_AISLE_LOCATION = 135;
     const static int RIGHT_VERTICAL_AISLE_LOCATION = 655;
 

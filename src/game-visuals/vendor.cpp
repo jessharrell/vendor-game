@@ -40,6 +40,12 @@ void vendor::keyPressEvent(QKeyEvent* event)
         {
             changePixmap(constantValues::VENDOR_MOVING_RIGHT_FILENAME);
             moveBy(constantValues::MOVEMENT_AMOUNT, 0);
+        } else
+        {
+            QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
+            food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
+            food->setPos(pos().x() + constantValues::MOVEMENT_AMOUNT, pos().y());
+            scene()->addItem(food);
         }
     }
     else if( Qt::Key_Up == event->key() )

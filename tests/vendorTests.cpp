@@ -206,3 +206,22 @@ TEST_F(TestVendorInScene, dropsFoodToLeftWhenLeftIsPressedAndInVerticalAisle)
     EXPECT_EQ(1, scene.items(selectionRect, Qt::IntersectsItemShape).count());
     EXPECT_EQ(2, scene.items().count());
 }
+
+TEST_F(TestVendorInScene, dropsFoodToRightWhenRightIsPressedAndInVerticalAisle)
+{
+    ASSERT_EQ(1, scene.items().count());
+    sut->setY(constantValues::LEFT_VERTICAL_AISLE_LOCATION);
+    QPointF vendorPosition = sut->pos();
+    EXPECT_EQ(NULL, scene.itemAt(vendorPosition.x() + constantValues::MOVEMENT_AMOUNT,
+                 vendorPosition.y(),
+                 QTransform()));
+
+    pressKey(Qt::Key_Right);
+
+    QRect selectionRect(vendorPosition.x() + constantValues::MOVEMENT_AMOUNT,
+                        vendorPosition.y(),
+                        20,20);
+
+    EXPECT_EQ(1, scene.items(selectionRect, Qt::IntersectsItemShape).count());
+    EXPECT_EQ(2, scene.items().count());
+}
