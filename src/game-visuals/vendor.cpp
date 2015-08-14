@@ -30,6 +30,7 @@ void vendor::keyPressEvent(QKeyEvent* event)
         } else
         {
             food* foodItem = new food();
+            foodItem->setDirection(food::left); // need to find how to test this
             foodItem->setPos(pos().x() - foodItem->boundingRect().width(), pos().y());
             scene()->addItem(foodItem);
         }
@@ -43,6 +44,7 @@ void vendor::keyPressEvent(QKeyEvent* event)
         } else
         {
             food* foodItem = new food();
+            foodItem->setDirection(food::right); // need to find how to test this
             foodItem->setPos(pos().x() + boundingRect().width(), pos().y());
             scene()->addItem(foodItem);
         }

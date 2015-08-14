@@ -1,5 +1,6 @@
 #include "food.h"
 #include <game/constantValues.h>
+#include <QDebug>
 
 food::food(QGraphicsItem* parent)
     : QGraphicsPixmapItem(parent)
@@ -15,7 +16,12 @@ food::~food()
 
 void food::advance(int phase)
 {
+    qDebug() << "advance called";
 
+    if( 1 == phase)
+    {
+        moveBy(5 * currentDirection,0);
+    }
 }
 
 food::direction food::getDirection()
