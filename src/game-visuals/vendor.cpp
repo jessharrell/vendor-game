@@ -1,4 +1,5 @@
 #include "vendor.h"
+#include "food.h"
 #include <game/constantValues.h>
 #include <QKeyEvent>
 #include <QGraphicsScene>
@@ -28,10 +29,9 @@ void vendor::keyPressEvent(QKeyEvent* event)
             moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
         } else
         {
-            QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
-            food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
-            food->setPos(pos().x() - food->boundingRect().width(), pos().y());
-            scene()->addItem(food);
+            food* foodItem = new food();
+            foodItem->setPos(pos().x() - foodItem->boundingRect().width(), pos().y());
+            scene()->addItem(foodItem);
         }
     }
     else if( Qt::Key_Right == event->key() )
@@ -42,10 +42,9 @@ void vendor::keyPressEvent(QKeyEvent* event)
             moveBy(constantValues::MOVEMENT_AMOUNT, 0);
         } else
         {
-            QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
-            food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
-            food->setPos(pos().x() + boundingRect().width(), pos().y());
-            scene()->addItem(food);
+            food* foodItem = new food();
+            foodItem->setPos(pos().x() + boundingRect().width(), pos().y());
+            scene()->addItem(foodItem);
         }
     }
     else if( Qt::Key_Up == event->key() )

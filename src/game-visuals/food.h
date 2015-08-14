@@ -1,11 +1,13 @@
 #ifndef FOOD_H
 #define FOOD_H
 
+#include <QGraphicsPixmapItem>
 
-class food
+class food : public QGraphicsPixmapItem
 {
 public:
-    food();
+    explicit food(QGraphicsItem *parent = 0);
+    virtual ~food();
 };
 
 #endif // FOOD_H
