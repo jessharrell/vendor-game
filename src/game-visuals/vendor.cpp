@@ -2,6 +2,8 @@
 #include <game/constantValues.h>
 #include <QKeyEvent>
 #include <QGraphicsScene>
+#include <QGraphicsItemAnimation>
+#include <QTimeLine>
 
 vendor::vendor(QGraphicsItem* parent)
     : QGraphicsPixmapItem(parent)
@@ -24,6 +26,12 @@ void vendor::keyPressEvent(QKeyEvent* event)
         {
             changePixmap(constantValues::VENDOR_MOVING_LEFT_FILENAME);
             moveBy(-1 * constantValues::MOVEMENT_AMOUNT, 0);
+        } else
+        {
+            QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
+            food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
+            food->setPos(pos().x() - constantValues::MOVEMENT_AMOUNT, pos().y());
+            scene()->addItem(food);
         }
     }
     else if( Qt::Key_Right == event->key() )
@@ -51,12 +59,10 @@ void vendor::keyPressEvent(QKeyEvent* event)
             moveBy(0, constantValues::MOVEMENT_AMOUNT);
         }
     }
+    // use left right keys instead
     else if( Qt::Key_Space == event->key() )
     {
-        QGraphicsPixmapItem* food = new QGraphicsPixmapItem(NULL);
-        food->setPixmap(QPixmap(constantValues::FOOD_FILENAME));
-        food->setPos(pos().x() + 10, pos().y()); // need to test
-        scene()->addItem(food);
+
     }
 }
 

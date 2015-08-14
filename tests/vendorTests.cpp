@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <QApplication>
 #include <QKeyEvent>
 #include <QGraphicsScene>
@@ -187,9 +188,21 @@ TEST_F(TestVendorInScene, doesNotMoveRightWhenNotInOneOfTheHorizontalAisles)
     EXPECT_EQ(originalPos.y(), updatedPos.y());
 }
 
-TEST_F(TestVendorInScene, dropsFoodWhenTheSpaceBarIsPressed)
+TEST_F(TestVendorInScene, dropsFoodToLeftWhenLeftIsPressedAndInVerticalAisle)
 {
     ASSERT_EQ(1, scene.items().count());
-    pressKey(Qt::Key_Space);
+    sut->setY(constantValues::LEFT_VERTICAL_AISLE_LOCATION);
+    QPointF vendorPosition = sut->pos();
+    EXPECT_EQ(NULL, scene.itemAt(vendorPosition.x() - constantValues::MOVEMENT_AMOUNT,
+                 vendorPosition.y(),
+                 QTransform()));
+
+    pressKey(Qt::Key_Left);
+
+    QRect selectionRect(vendorPosition.x() - constantValues::MOVEMENT_AMOUNT,
+                        vendorPosition.y(),
+                        40,40);
+
+    EXPECT_EQ(1, scene.items(selectionRect, Qt::IntersectsItemShape).count());
     EXPECT_EQ(2, scene.items().count());
 }

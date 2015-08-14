@@ -1,4 +1,5 @@
-include_directories(${CMAKE_SOURCE_DIR}/gtest-1.7.0/include)
+include_directories(${CMAKE_SOURCE_DIR}/gmock-1.7.0/include)
+include_directories(${CMAKE_SOURCE_DIR}/gmock-1.7.0/gtest/include)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 add_executable( _gameTests
